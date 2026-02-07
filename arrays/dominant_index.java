@@ -2,7 +2,7 @@
 // Approach:
 // 1. Find maximum element and its index
 // 2. Check if max >= 2 * every other element
-// Time: O(n), Space: O(1).
+// Time: O(n), Space: O(1)
 
 
 class Solution {
