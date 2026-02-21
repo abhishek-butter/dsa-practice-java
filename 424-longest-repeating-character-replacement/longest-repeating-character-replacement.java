@@ -8,8 +8,8 @@ class Solution {
         for(int i=0;i<s.length();i++){
             
             
-                freq[s.charAt(i)-'A']++;
-                mf=Math.max(mf,freq[s.charAt(i)-'A']);
+                
+                mf=Math.max(mf,++freq[s.charAt(i)-'A']);
 
                 
                  
