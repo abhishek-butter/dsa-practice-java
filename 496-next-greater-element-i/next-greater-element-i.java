@@ -1,7 +1,7 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int a[]=new int[nums1.length];
-        Stack<Integer> s=new Stack<>();
+
         for(int j=0;j<nums1.length;j++){
 
             a[j]=finder(nums1[j],nums2);
