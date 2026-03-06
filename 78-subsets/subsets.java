@@ -1,20 +1,25 @@
 class Solution {
+    List<List<Integer>> l;
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> l=new ArrayList<>();
-        recurs(nums,0,new ArrayList<>(),l);
+        l=new ArrayList<>();
+        recursion(nums,0,new ArrayList<>());
+
         return l;
+
+
         
     }
-    public void recurs(int[] nums,int k,List<Integer> result,List<List<Integer>> l ){
-        if(k==nums.length){
-            l.add(new ArrayList<>(result));
+    public void  recursion(int nums[],int index,List<Integer> subarray){
+        if(index==nums.length){
+            l.add(new ArrayList<>(subarray));
             return;
         }
+        subarray.add(nums[index]);
+        recursion(nums,index+1,subarray);
 
-        result.add(nums[k]);
-        recurs(nums,k+1,result,l);
+        subarray.remove(subarray.size()-1);
+        recursion(nums,index+1,subarray);
 
-        result.remove(result.size()-1);
-        recurs(nums,k+1,result,l);
+        
     }
 }
