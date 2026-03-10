@@ -11,10 +11,12 @@ class Solution {
             if(r>l){
                 left++;
             }
-            else{
+            else if(r<l){
                 right--;
             }
-            
+            else{
+                left++;
+            }
         }
         return maxv;
 
