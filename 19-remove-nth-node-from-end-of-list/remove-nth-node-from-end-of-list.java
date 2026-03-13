@@ -15,9 +15,9 @@ class Solution {
 
         ListNode fast=dummy;
         ListNode slow=dummy;
-        while(n>=0){
+        for(int i=0;i<=n;i++){
             fast=fast.next;
-            n--;
+
         }
         while(fast!=null){
             slow=slow.next;
