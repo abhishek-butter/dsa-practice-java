@@ -29,8 +29,9 @@ class Solution {
         }
         ListNode f=head;
         while(prev!=null){
-            ListNode n2=prev.next;
             ListNode n1=f.next;
+            ListNode n2=prev.next;
+            
 
             f.next=prev;
             prev.next=n1;
