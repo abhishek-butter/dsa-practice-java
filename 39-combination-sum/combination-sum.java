@@ -1,28 +1,22 @@
 class Solution {
     List<List<Integer>> l;
-    
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         l=new ArrayList<>();
-        recursion(candidates,0,target,new ArrayList<>());
-        return l;
-        
+        recursion(0,candidates,target,new ArrayList<>());
+        return l;   
     }
-    public void recursion(int[] candidates,int index,int target,List<Integer> pocket){
-        if(target==0){
-            l.add(new ArrayList<>(pocket));
+    public void recursion(int i,int[] c,int sum,List<Integer> pocket){
+        if(sum==0){
+            l.add(new ArrayList(pocket));
+            return;   
+        }
+        if (i == c.length || sum < 0) {
             return;
         }
-
-
-        if(target<0||index==candidates.length){
-            return;
-        }
-
-        pocket.add(candidates[index]);
-        recursion(candidates,index,target-candidates[index],pocket);
-
+        pocket.add(c[i]);
+        recursion(i,c,sum-c[i],pocket);
         pocket.remove(pocket.size()-1);
-        recursion(candidates,index+1,target,pocket);
-    
+        recursion(i+1,c,sum,pocket);        
     }
 }
