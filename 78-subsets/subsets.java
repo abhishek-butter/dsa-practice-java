@@ -2,24 +2,19 @@ class Solution {
     List<List<Integer>> l;
     public List<List<Integer>> subsets(int[] nums) {
         l=new ArrayList<>();
-        recursion(nums,0,new ArrayList<>());
-
+        recursion(0,nums,new ArrayList<>());
         return l;
-
-
         
     }
-    public void  recursion(int nums[],int index,List<Integer> subarray){
-        if(index==nums.length){
-            l.add(new ArrayList<>(subarray));
+    public void recursion(int i,int[] n,List<Integer> pocket){
+        if(i==n.length){
+            l.add(new ArrayList(pocket));
+
             return;
         }
-        subarray.add(nums[index]);
-        recursion(nums,index+1,subarray);
-
-        subarray.remove(subarray.size()-1);
-        recursion(nums,index+1,subarray);
-
-        
+        pocket.add(n[i]);
+        recursion(i+1,n,pocket);
+        pocket.remove(pocket.size()-1);
+        recursion(i+1,n,pocket);
     }
 }
