@@ -1,25 +1,31 @@
 class Solution {
-    HashSet<List<Integer>> set;
-    
+    List<List<Integer>> l;
+
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        set=new HashSet<>();
+        l=new ArrayList<>();
         Arrays.sort(nums);
-        recursion(nums,0,new ArrayList<>());
-        List<List<Integer>> result=new ArrayList<>(set);
-        return result;
+        
+
+        backtrack(0,nums,new ArrayList<>());
+
+        return l;
+
+
         
     }
-    public void recursion(int nums[],int index,List<Integer> pocket){
-        if(index==nums.length){
-            set.add(new ArrayList<>(pocket));
+    public void backtrack(int i,int[] n,List<Integer> pocket){
+        if(i==n.length){
+            l.add(new ArrayList<>(pocket));
             return;
         }
-
-
-        pocket.add(nums[index]);
-        recursion(nums,index+1,pocket); 
+        pocket.add(n[i]);
+        backtrack(i+1,n,pocket);
         pocket.remove(pocket.size()-1);
-        recursion(nums,index+1,pocket);
+        while(i+1<n.length && n[i]==n[i+1]){i++;}
+        backtrack(i+1,n,pocket);
         
+
+       
+
     }
 }
