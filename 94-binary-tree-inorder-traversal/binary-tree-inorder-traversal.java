@@ -19,18 +19,19 @@ class Solution {
         l=new ArrayList<>();
         inorder(root);
         return l;
-
         
     }
-    public void inorder(TreeNode r){
-        if(r==null)return;
+    public void  inorder(TreeNode root){
+        if(root==null){
+           
+            return;
+        }
 
-        inorder(r.left);
+        inorder(root.left);
 
-        l.add(r.val);
+        l.add(root.val);
 
-        inorder(r.right);
-
+        inorder(root.right);
         
     }
 }
