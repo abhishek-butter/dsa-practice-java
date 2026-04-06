@@ -15,8 +15,8 @@
  */
 class Solution {
     public int findBottomLeftValue(TreeNode root) {
-        Stack<Integer> l=new Stack<>();
-        if(root==null)return l.peek();
+        int top=0;
+        if(root==null)return top;
 
         Queue<TreeNode> q=new LinkedList<>();
         q.add(root);
@@ -27,7 +27,7 @@ class Solution {
                 TreeNode t=q.poll();
 
                 if(i==0){
-                    l.push(t.val);
+                    top=t.val;
                 }
 
                 if(t.left!=null)q.add(t.left);
@@ -36,7 +36,7 @@ class Solution {
 
 
         }
-        return l.peek();
+        return top;
         
     }
 }
