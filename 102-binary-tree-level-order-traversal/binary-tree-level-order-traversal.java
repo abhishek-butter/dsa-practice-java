@@ -19,30 +19,27 @@ class Solution {
         if(root==null)return l;
 
         Queue<TreeNode> q=new LinkedList<>();
-
         q.add(root);
 
         while(!q.isEmpty()){
-            int size=q.size();
+            int s=q.size();
             List<Integer> cl=new ArrayList<>();
-            for(int i=0;i<size;i++){
-                TreeNode temp=q.poll();
-                cl.add(temp.val);
 
-                if(temp.left!=null)q.add(temp.left);
-                
-                if(temp.right!=null)q.add(temp.right);
+            for(int i=0;i<s;i++){
+                TreeNode t=q.poll();
+                cl.add(t.val);
+
+                if(t.left!=null)q.add(t.left);
+                if(t.right!=null)q.add(t.right);
 
             }
-            l.add(cl);
+            
 
-            
-            
-            
+
+           l.add(cl);
+
         }
         return l;
-
-
         
     }
 }
