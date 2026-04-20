@@ -14,7 +14,8 @@
  * }
  */
 class Solution {
-    int pi=0;
+    int index=0;
+
     HashMap<Integer,Integer> map;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         map=new HashMap<>();
@@ -22,26 +23,25 @@ class Solution {
         for(int i=0;i<inorder.length;i++){
             map.put(inorder[i],i);
 
-
         }
-        
-        return construct(preorder,0,inorder.length-1);
-        
+        return create(preorder,0,preorder.length-1);
+
         
     }
-    public TreeNode construct(int[] preorder,int leftrange,int rightrange){
-        if(leftrange>rightrange){
+    public TreeNode create(int[] p,int left,int right){
+
+        if(left>right){
             return null;
         }
+        int val=p[index++];
+        TreeNode root=new TreeNode(val);
 
-        int value=preorder[pi++];
-        TreeNode root =new TreeNode(value);
 
-        root.left=construct(preorder,leftrange,map.get(value)-1);
-        root.right=construct(preorder,map.get(value)+1,rightrange);
+        root.left=create(p,left,map.get(val)-1);
+        root.right=create(p,map.get(val)+1,right);
         
+
         return root;
     }
-    
 
 }
