@@ -3,7 +3,7 @@ class Solution {
 
         int maxlength=0;
         int left=0;
-        int f[]=new int[256];
+        int f[]=new int[128];
         int mostfreq=0;
 
         for(int right=0;right<s.length();right++){
