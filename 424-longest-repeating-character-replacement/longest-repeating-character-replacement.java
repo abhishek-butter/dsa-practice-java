@@ -3,7 +3,7 @@ class Solution {
 
         int maxlength=0;
         int left=0;
-        int f[]=new int[128];
+        int f[]=new int[26];
         int mostfreq=0;
 
         for(int right=0;right<s.length();right++){
@@ -11,13 +11,13 @@ class Solution {
 
             
 
-            f[a]++;
-            mostfreq=Math.max(f[a],mostfreq);
+            f[a-'A']++;
+            mostfreq=Math.max(f[a-'A'],mostfreq);
 
             if(right-left+1-mostfreq>k){
                 
                 char l=s.charAt(left);
-                f[l]--;
+                f[l-'A']--;
                 left++;
             }
 
