@@ -1,7 +1,9 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+
         HashMap<Integer,Integer> map=new HashMap<>();
         Stack<Integer> s=new Stack<>();
+
         for(int n:nums2){
             while(!s.isEmpty() && n>s.peek()){
                 map.put(s.pop(),n);
@@ -16,9 +18,10 @@ class Solution {
         for(int n:nums1){
             a[i]=map.get(n);
             i++;
-
         }
         return a;
+
+
         
     }
 }
