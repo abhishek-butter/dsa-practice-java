@@ -1,21 +1,21 @@
 class Solution {
     public int characterReplacement(String s, int k) {
-        int f[]=new int[128];
+        int f[]=new int[126];
+        int maxf=0;
+        int maxlength=0;
         int left=0;
-        int mf=0;
-        int ml=0;
-        for(int i=0;i<s.length();i++){
-            char c=s.charAt(i);
-            f[c]++;
-            mf=Math.max(f[c],mf);
+        for(int right=0;right<s.length();right++){
+            f[s.charAt(right)]++;
 
-            if(i-left+1-mf>k){
-                 f[s.charAt(left)]--;
-                 left++;
+            maxf=Math.max(f[s.charAt(right)],maxf);
+            if(right-left+1-maxf >k){
+                f[s.charAt(left)]--;
+                left++;
             }
-            ml=Math.max(ml,i-left+1);
+            
+            maxlength=Math.max(right-left+1,maxlength);
         }
-        return ml;
+        return maxlength;
         
     }
 }
