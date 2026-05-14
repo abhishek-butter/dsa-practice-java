@@ -1,9 +1,8 @@
 class Solution {
-    int[] State;
+    int[] state;
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-
-
-        List<Integer> l[] =new ArrayList[numCourses];
+        List<Integer>[] l=new ArrayList[numCourses];
+        
 
         for(int i=0;i<numCourses;i++){
             l[i]=new ArrayList<>();
@@ -13,28 +12,33 @@ class Solution {
             l[p[1]].add(p[0]);
 
         }
-        
-        State=new int[numCourses];
+        state=new int[numCourses];
+
         for(int i=0;i<numCourses;i++){
             if(dfs(l,i))return false;
+
         }
         return true;
-
+        
         
     }
 
     public boolean dfs(List<Integer>[] l,int c){
-        if(State[c]==1)return true;
+        if(state[c]==1){
+            return true;
+        }
+        if(state[c]==2){
+            return false;
+        }
 
-        if(State[c]==2)return false;
+        state[c]=1;
 
-        State[c]=1;
 
         for(int n:l[c]){
-            if(dfs(l,n))return true;
+            if(dfs(l,n))return true;;
         }
-        State[c]=2;
 
+        state[c]=2;
         return false;
-    }
+    }   
 }
