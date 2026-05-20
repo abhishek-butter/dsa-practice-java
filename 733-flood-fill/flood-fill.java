@@ -8,9 +8,10 @@ class Solution {
             int arr[]=q.poll();
             int r=arr[0];
             int c=arr[1];
+            visited[r][c]=1;
             
             image[r][c]=color;
-            visited[r][c]=1;
+            
             if(r+1<image.length && image[r+1][c]==prevcolour && visited[r+1][c]==0){
                 q.add(new int[]{r+1,c});
             }
