@@ -1,7 +1,7 @@
 class Solution {
-    int visited[][];
+    
     public void solve(char[][] board) {
-        visited=new int[board.length][board[0].length];
+        
 
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[0].length;j++){
@@ -39,10 +39,10 @@ class Solution {
     }
     public void dfs(char[][] b,int i,int j){
 
-        if(i<0||j<0||i>b.length-1||j>b[0].length-1||b[i][j]=='X'||visited[i][j]==1)return ;
+        if(i<0||j<0||i>b.length-1||j>b[0].length-1||b[i][j]=='X'||b[i][j]=='#')return ;
         
         b[i][j]='#';
-        visited[i][j]=1;
+        
         
 
         dfs(b,i+1,j);
