@@ -1,21 +1,22 @@
 class Solution {
     public int findRadius(int[] houses, int[] heaters) {
-        int ans=0;
+        int a=0;
         Arrays.sort(heaters);
-
-        for(int i:houses){
-            ans=Math.max(ans,BI(heaters,i,0,heaters.length-1));
-        }
-        return ans;
         
+        for(int i:houses){
+            a=Math.max(Binary(heaters,i),a);
+
+        }
+        return a;
     }
-    public int BI(int[] h,int t,int left,int right){
-        int found=h.length;
+    public int Binary(int[] h,int p){
+        int left=0;
+        int right=h.length-1;
+        int f=h.length;
         while(left<=right){
             int mid=(left+right)/2;
-            
-            if(h[mid]>=t){
-                found=mid;
+            if(h[mid]>=p){
+                f=mid;
                 right=mid-1;
 
             }
@@ -24,14 +25,11 @@ class Solution {
             }
 
         }
-        if(found==0)return Math.abs(t-h[found]);
-        if(found==h.length)return Math.abs(t-h[found-1]);
+        if(f==0)return Math.abs(p-h[f]);
+        if(f==h.length) return Math.abs(p-h[f-1]);
+        
 
-
-        return Math.min(
-            Math.abs(h[found]-t),
-            Math.abs(h[found-1]-t)
-        );
-
+        return Math.min(Math.abs(p-h[f]),Math.abs(p-h[f-1]));
+        
     }
 }
