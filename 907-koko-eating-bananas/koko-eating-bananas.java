@@ -28,6 +28,6 @@ class Solution {
             e+=Math.ceil((double)i/mid);
             if(e>h)return false;
         }
-        return h>=e;
+        return true;
     }
 }
