@@ -6,7 +6,7 @@ class Solution {
         for(int i:piles){
             if(i>right)right=i;
         }
-        int left=0;
+        int left=1;
         int ans=99999999;
         while(left<=right){
             int mid=(left+right)/2;
@@ -26,6 +26,7 @@ class Solution {
         
         for(int i:arr){
             e+=Math.ceil((double)i/mid);
+            if(e>h)return false;
         }
         return h>=e;
     }
