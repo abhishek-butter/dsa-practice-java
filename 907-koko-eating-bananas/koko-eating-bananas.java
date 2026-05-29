@@ -3,7 +3,7 @@ class Solution {
         
         Arrays.sort(piles);
         int right=piles[piles.length-1];
-        int left=1;
+        int left=0;
         int ans=99999999;
         while(left<=right){
             int mid=(left+right)/2;
