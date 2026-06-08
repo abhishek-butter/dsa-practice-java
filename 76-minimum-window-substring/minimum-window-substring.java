@@ -1,43 +1,36 @@
 class Solution {
     public String minWindow(String s, String t) {
-        if(t.length()>s.length())return "";
-        HashMap<Character,Integer> map=new HashMap<>();
-        HashMap<Character,Integer> tf=new HashMap<>();
-        for(char i:t.toCharArray()){
-            tf.put(i,tf.getOrDefault(i,0)+1);
+        int present[]=new int[126];
+        for(char c:t.toCharArray()){
+            present[c-'A']++;
         }
+        int req=t.length();
         int left=0;
+        int v=99999999;
         String ans="";
-        int len=9999999;
-        int i=0;
-         
         
-        while(i<s.length()){
-            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
+        for(int i=0;i<s.length();i++){
+            if(present[s.charAt(i)-'A']>0){
+                
 
-            while(valid(map,tf)){
-                
-                if(i-left+1<len){
-                    len=i-left+1;
-                    ans=s.substring(left,i+1);
-                }
-                
-                map.put(s.charAt(left),map.get(s.charAt(left))-1);
-                left++;
-                
+                req--;
             }
-            i++;
+            present[s.charAt(i)-'A']--;
+            
+            while(req==0){
+                if(i-left+1<v){
+                    ans=s.substring(left,i+1);
+                    v=i-left+1;
+                }             
+                present[s.charAt(left)-'A']++;
+                if(present[s.charAt(left)-'A']>0)req++;
+                left++;
+
+            }
+            
+
         }
         return ans;
-
         
-        
-    }
-    public boolean valid(HashMap<Character,Integer> window,HashMap<Character,Integer> need){
-        for(char c : need.keySet()){
-            if(window.getOrDefault(c,0) < need.get(c))
-                return false;
-        }
-        return true;
     }
 }
