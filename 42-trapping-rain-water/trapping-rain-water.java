@@ -14,7 +14,7 @@ class Solution {
         }
         m=height[height.length-1];
         for(int i=height.length-1;i>-1;i--){
-            mr[i]=m;
+            
             m = Math.max(m,height[i]);
             mr[i]=m;
 
