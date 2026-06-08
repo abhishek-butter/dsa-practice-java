@@ -1,8 +1,8 @@
 class Solution {
     public String minWindow(String s, String t) {
-        int present[]=new int[126];
+        int present[]=new int[128];
         for(char c:t.toCharArray()){
-            present[c-'A']++;
+            present[c]++;
         }
         int req=t.length();
         int left=0;
@@ -10,20 +10,20 @@ class Solution {
         String ans="";
         
         for(int i=0;i<s.length();i++){
-            if(present[s.charAt(i)-'A']>0){
+            if(present[s.charAt(i)]>0){
                 
 
                 req--;
             }
-            present[s.charAt(i)-'A']--;
+            present[s.charAt(i)]--;
             
             while(req==0){
                 if(i-left+1<v){
                     ans=s.substring(left,i+1);
                     v=i-left+1;
                 }             
-                present[s.charAt(left)-'A']++;
-                if(present[s.charAt(left)-'A']>0)req++;
+                present[s.charAt(left)]++;
+                if(present[s.charAt(left)]>0)req++;
                 left++;
 
             }
