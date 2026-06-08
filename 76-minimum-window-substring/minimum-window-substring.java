@@ -10,12 +10,11 @@ class Solution {
         String ans="";
         
         for(int i=0;i<s.length();i++){
-            if(present[s.charAt(i)]>0){
-                
-
+            present[s.charAt(i)]--;
+            if(present[s.charAt(i)]>-1){
                 req--;
             }
-            present[s.charAt(i)]--;
+            
             
             while(req==0){
                 if(i-left+1<v){
