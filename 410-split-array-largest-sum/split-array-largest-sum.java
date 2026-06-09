@@ -1,35 +1,43 @@
 class Solution {
     public int splitArray(int[] nums, int k) {
-        int l=0;
-        int r=0;
+        int left=0;
+        int right=0;
+        
         for(int i:nums){
-            r+=i;
-            if(i>l)l=i;
+            if(i>left)left=i;
+            right+=i;
         }
-        int ans=0;
-        while(l<=r){
-            int m=(l+r)/2;
-            if(check(nums,k,m)){
-                ans=m;
-                r=m-1;
+        if(k==1)return right;
+        int ans=99999999;
+        while(left<=right){
+            int mid=(left+right)/2;
+            if(checker(nums,mid,k)){
+                ans=Math.min(mid,ans);
+                right=mid-1;
 
             }
-            else l=m+1;
+            else{
+                left=mid+1;
+            }
         }
         return ans;
+        
+
 
         
     }
-    public boolean check(int[] n,int k ,int mid){
+    public boolean checker(int[] nums,int mid,int k){
         int g=1;
-        int sum=0;
-        for(int i:n){
-            if(sum+i>mid){
+        int s=0;
+        for(int i:nums){
+            if(s+i>mid){
+                s=0;
                 g++;
-                sum=0;
+
             }
-            sum+=i;
+            s+=i;
+
         }
-        return k>=g;
+        return (k>=g)?true:false;
     }
 }
