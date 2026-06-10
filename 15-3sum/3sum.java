@@ -16,6 +16,7 @@ class Solution {
                 else {
                     li.add(Arrays.asList(nums[i],nums[l],nums[r]));
                     l++;
+                    r--;
                     while(l<nums.length-1 && l>0 && nums[l]==nums[l-1])l++;
                     while(r>0 && r<nums.length-1 && nums[r]==nums[r+1])r--;
                     
