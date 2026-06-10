@@ -24,13 +24,14 @@ class Solution {
                     
                     
                 }
-                
-            if(map.containsKey(s.charAt(left))){
                 map.put(s.charAt(left),map.get(s.charAt(left))+1);
+                
+            
+                
                 if(map.get(s.charAt(left))>0)req++;
                 
 
-            }
+            
             left++;
             
             
