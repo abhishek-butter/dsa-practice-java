@@ -1,25 +1,32 @@
 class Solution {
     public boolean isValid(String s) {
-        Deque<Character> d=new ArrayDeque<>();
+        Stack<Character> cc=new Stack<>();
 
-
-
-        for(char c:s.toCharArray()){
-
-            if(c=='['||c=='{'||c=='('){
-                d.push(c);
+        for(char c: s.toCharArray()){
+            if(!cc.isEmpty()){
+                
+                if(cc.peek()=='{' && c=='}'){
+                    
+                    cc.pop();
+                    continue;
+                }
+                else if(cc.peek()=='['&& c==']'){
+                    
+                    cc.pop();
+                    continue;
+                }
+                else if(cc.peek()=='('&& c==')'){
+                    
+                    cc.pop();
+                    continue;
+                }
+                
+                
+                
             }
-            else{
-                if(d.isEmpty())return false;
-                char top=d.pop();
-
-                if(c==')' && top!='(')return false;
-                if(c==']' && top!='[')return false;
-                if(c=='}' && top!='{')return false;
-            }
-            
+            cc.add(c);     
         }
-        return d.isEmpty();
+        return cc.isEmpty()?true:false;
         
     }
 }
