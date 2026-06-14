@@ -12,20 +12,12 @@ class Solution {
             l.add(s);
             return;
         }
-        if(open<n){
-            
-            backtrack(n,open+1,close,s+"(");
-            
-        }
+        if(open<n)backtrack(n,open+1,close,s+"(");           
+
        
         
-        if(close<open){
-            
-            backtrack(n,open,close+1,s+")");
-            
-
-        }
+        if(close<open)backtrack(n,open,close+1,s+")");
+               
         
-        return;
     }
 }
