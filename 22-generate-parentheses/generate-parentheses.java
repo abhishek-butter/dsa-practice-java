@@ -6,9 +6,8 @@ class Solution {
         return l; 
     }
     public void backtrack(int n,int open,int close,String s){
-        if(close>open)return;
-        if(s.length()==2*n){
-            
+        
+        if(s.length()==2*n){       
             l.add(s);
             return;
         }
