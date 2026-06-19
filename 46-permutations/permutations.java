@@ -1,26 +1,24 @@
 class Solution {
+    boolean[] check;
     List<List<Integer>> l;
     public List<List<Integer>> permute(int[] nums) {
+        check=new boolean[128];
         l=new ArrayList<>();
-        boolean checker[]=new boolean[21];
-        recursion(nums,checker,new ArrayList<>());
+        rec(nums,new ArrayList<>());
         return l;
     }
-    public void recursion(int nums[],boolean check[],List<Integer> pocket){
+    public void rec(int[] nums,List<Integer> pocket){
         if(pocket.size()==nums.length){
             l.add(new ArrayList<>(pocket));
             return;
         }
         for(int i=0;i<nums.length;i++){
             if(check[i])continue;
-
             check[i]=true;
             pocket.add(nums[i]);
-
-            recursion(nums,check,pocket);
-
-            check[i]=false;
+            rec(nums,pocket);
             pocket.remove(pocket.size()-1);
+            check[i]=false;
         }
     }
 }
