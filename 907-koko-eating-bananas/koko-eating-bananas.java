@@ -1,16 +1,16 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        
-        
+
         int right=0;
+        int left=1;
         for(int i:piles){
+            
             if(i>right)right=i;
         }
-        int left=1;
-        int ans=99999999;
+        int ans=0;
         while(left<=right){
             int mid=(left+right)/2;
-            if(check(piles,h,mid)){
+            if(bs(piles,h,mid)){
                 ans=mid;
                 right=mid-1;
             }
@@ -21,13 +21,11 @@ class Solution {
         return ans;
         
     }
-    public boolean check(int[] arr,int h,int mid){
-        int e=0;
-        
-        for(int i:arr){
-            e+=Math.ceil((double)i/mid);
-            if(e>h)return false;
+    public boolean bs(int[]piles,int h,int l){
+        int th=0;
+        for(int i:piles){
+            th+=Math.ceil((double)i/l);
         }
-        return true;
+        return (th>h)?false:true;
     }
 }
