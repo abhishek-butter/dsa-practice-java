@@ -8,7 +8,7 @@ class Solution {
         }
         int ans=0;
         while(left<=right){
-            int mid=(left+right)/2;
+            int mid=left+(right-left)/2;
             if(checker(weights,days,mid)){
                 ans=mid;
                 right=mid-1;
