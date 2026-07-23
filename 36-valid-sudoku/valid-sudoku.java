@@ -25,25 +25,22 @@ class Solution {
         s1=new HashSet<>();
 
         for(int i=0;i<imax;i++){
-            if(i==3){
+            if(i==3 || i==6){
                 s1=new HashSet<>();
                 s2=new HashSet<>();
                 s3=new HashSet<>();
             }
-            if(i==6){
-                s1=new HashSet<>();
-                s2=new HashSet<>();
-                s3=new HashSet<>();
-            }
+            
             for(int j=0;j<jmax;j++){
                 char c=board[i][j];
-                if(j>2 && j<6){
-                    if(c=='.')continue;
-                    if(!s2.add(c))return false;
-                }
-                else if(j>5){
+                if(j>5){
                     if(c=='.')continue;
                     if(!s3.add(c))return false;
+                }
+                else if(j>2){
+                    
+                    if(c=='.')continue;
+                    if(!s2.add(c))return false;
                 }
                 else{
                     if(c=='.')continue;
