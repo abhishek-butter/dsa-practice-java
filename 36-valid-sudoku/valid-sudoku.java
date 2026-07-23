@@ -9,15 +9,17 @@ class Solution {
         for(int i=0;i<imax;i++){
             s1=new HashSet<>();
             for(int j=0;j<jmax;j++){
-                if(board[i][j]=='.')continue;
-                if(!s1.add(board[i][j]))return false;
+                char c=board[i][j];
+                if(c=='.')continue;
+                if(!s1.add(c))return false;
             }
         }
         for(int i=0;i<imax;i++){
             s1=new HashSet<>();
             for(int j=0;j<jmax;j++){
-                if(board[j][i]=='.')continue;
-                if(!s1.add(board[j][i]))return false;
+                char c=board[j][i];
+                if(c=='.')continue;
+                if(!s1.add(c))return false;
             }
         }
         s1=new HashSet<>();
@@ -34,17 +36,18 @@ class Solution {
                 s3=new HashSet<>();
             }
             for(int j=0;j<jmax;j++){
+                char c=board[i][j];
                 if(j>2 && j<6){
-                    if(board[i][j]=='.')continue;
-                    if(!s2.add(board[i][j]))return false;
+                    if(c=='.')continue;
+                    if(!s2.add(c))return false;
                 }
                 else if(j>5){
-                    if(board[i][j]=='.')continue;
-                    if(!s3.add(board[i][j]))return false;
+                    if(c=='.')continue;
+                    if(!s3.add(c))return false;
                 }
                 else{
-                    if(board[i][j]=='.')continue;
-                    if(!s1.add(board[i][j]))return false;
+                    if(c=='.')continue;
+                    if(!s1.add(c))return false;
                 }
                 
 
