@@ -7,11 +7,9 @@ class Solution {
             map.put(c,map.getOrDefault(c,0)+1);
         }
         for(char c:t.toCharArray()){
-            if(map.containsKey(c) && map.get(c)>0){
-                map.put(c,map.getOrDefault(c,0)-1);
-
-            }
-            else return false;
+            Integer count=map.get(c);
+            if(count==null || count==0)return false;
+            map.put(c,map.get(c)-1);
         }
         return true;
         
