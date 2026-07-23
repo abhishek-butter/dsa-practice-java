@@ -33,19 +33,18 @@ class Solution {
             
             for(int j=0;j<jmax;j++){
                 char c=board[i][j];
+                if(c=='.')continue;
                 if(j>5){
-                    if(c=='.')continue;
                     if(!s3.add(c))return false;
                 }
                 else if(j>2){
-                    
-                    if(c=='.')continue;
                     if(!s2.add(c))return false;
-                }
-                else{
-                    if(c=='.')continue;
+                }      
+                else {
                     if(!s1.add(c))return false;
                 }
+                    
+                
                 
 
             }
