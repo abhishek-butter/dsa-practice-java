@@ -2,8 +2,8 @@ class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         int a[]=newInterval;
         List<int[]> l=new ArrayList<>();
-        for(int i=0;i<intervals.length;i++){
-            int[] ref=intervals[i];
+        for(int[] ref:intervals){
+            
             if(a[1]<ref[0]){
                 l.add(a);
                 a=ref;
