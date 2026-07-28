@@ -1,5 +1,9 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if(nums1.length>nums2.length){
+            return findMedianSortedArrays(nums2,nums1);
+        }
+        
 
         int left=0;
         int right=(nums1.length<nums2.length)?nums1.length:nums2.length;
@@ -7,17 +11,11 @@ class Solution {
         int aright=0;
         int bleft=0;
         int bright=0;
-        int small[]=nums1;
-        int big[]=nums2;
-        if(nums1.length>=nums2.length){
-            small=nums2;
-            big=nums1;
-
-        }
-        else {
-            small=nums1;
-            big=nums2;
-        }
+        int[] small=nums1;
+        int[] big=nums2;
+        
+        
+        
         while(left<=right){
             int leftp=left+(right-left)/2;
             int rightp=((small.length+big.length+1)/2)-leftp;
