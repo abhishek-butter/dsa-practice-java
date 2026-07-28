@@ -7,8 +7,17 @@ class Solution {
         int aright=0;
         int bleft=0;
         int bright=0;
-        int small[]=(nums1.length<nums2.length)?nums1:nums2;
-        int big[]=(small==nums1)?nums2:nums1;
+        int small[]=nums1;
+        int big[]=nums2;
+        if(nums1.length>=nums2.length){
+            small=nums2;
+            big=nums1;
+
+        }
+        else {
+            small=nums1;
+            big=nums2;
+        }
         while(left<=right){
             int leftp=left+(right-left)/2;
             int rightp=((small.length+big.length+1)/2)-leftp;
