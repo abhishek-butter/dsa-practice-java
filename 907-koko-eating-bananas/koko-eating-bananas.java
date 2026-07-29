@@ -22,9 +22,9 @@ class Solution {
     }
     public boolean checker(int[] piles,int h,int limit){
         
-        int ph=0;
+        long ph=0;
         for(int i:piles){
-            ph+=Math.ceil((double)i/limit);
+            ph+=(i+limit-1)/limit;
 
         }
         return (ph<=h);
