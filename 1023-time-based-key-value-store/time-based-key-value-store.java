@@ -14,24 +14,20 @@ class TimeMap {
     
     public String get(String key, int timestamp) {
         if(!map.containsKey(key))return "";
-        List<Pair<Integer,String>> l=map.get(key);
-        
+        List<Pair<Integer,String>> temp=map.get(key);
         int left=0;
         int right=map.get(key).size()-1;
-        int i=-1;
+        int ri=-1;
         while(left<=right){
             int mid=left+(right-left)/2;
-            
-            if(l.get(mid).getKey()<=timestamp){
-                i=mid;
+            if(temp.get(mid).getKey()<=timestamp){
+                ri=mid;
                 left=mid+1;
+
             }
-            else right=mid-1;
-
-
+            else right=mid-1;;
         }
-        return (i>-1)?l.get(i).getValue():"";
-
+        return (ri>-1)?temp.get(ri).getValue():"";
 
         
     }
