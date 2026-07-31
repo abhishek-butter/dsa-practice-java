@@ -6,7 +6,7 @@ class Solution {
         
         Deque<Pair<Integer,Integer>> dq=new ArrayDeque<>();
         for(int i=0;i<nums.length;i++){
-            while(!dq.isEmpty() && nums[i]>dq.peekLast().getKey())dq.pollLast();
+            while(!dq.isEmpty() && nums[i]>=dq.peekLast().getKey())dq.pollLast();
             dq.offerLast(new Pair<>(nums[i],i));
 
             if(i-left+1==k){
