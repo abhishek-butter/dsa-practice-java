@@ -4,13 +4,14 @@ class Solution {
         int c=0;
         int left=0;
         
-        PriorityQueue<Pair<Integer,Integer>> pq=new PriorityQueue<>((a,b)->Integer.compare(b.getKey(),a.getKey()));
+        Deque<Pair<Integer,Integer>> dq=new ArrayDeque<>();
         for(int i=0;i<nums.length;i++){
-            pq.offer(new Pair<>(nums[i],i));
+            while(!dq.isEmpty() && nums[i]>dq.peekLast().getKey())dq.pollLast();
+            dq.offerLast(new Pair<>(nums[i],i));
 
             if(i-left+1==k){
-                while(!pq.isEmpty() && pq.peek().getValue()<left)pq.poll();
-                maxarray[c++]=pq.peek().getKey();
+                while(!dq.isEmpty() && dq.peekFirst().getValue()<left)dq.pollFirst();
+                maxarray[c++]=dq.peek().getKey();
                 
                 left++;
 
