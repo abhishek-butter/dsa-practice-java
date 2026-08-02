@@ -3,17 +3,11 @@ class Solution {
         int left=0;
         int right=height.length-1;
         int max=0;
-        while(left<=right){
-            max=Math.max(max,Math.min(height[left],height[right])*(right-left));
-            if(height[left]==height[right]){
-                left++;
-                continue;
-            }
-            if(height[left]<height[right])left++;
-            else right--;
-
+        while(left<right){
+            max=Math.max(max,(right-left)*Math.min(height[right],height[left]));
+            if(height[right]<height[left])right--;
+            else left++;
         }
         return max;
-        
     }
 }
