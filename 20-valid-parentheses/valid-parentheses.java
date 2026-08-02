@@ -5,11 +5,14 @@ class Solution {
             if(c=='(')dq.offerLast(')');
             else if(c=='[')dq.offerLast(']');
             else if(c=='{')dq.offerLast('}');
-            else if(!dq.isEmpty() ){
-                if(dq.pollLast()!=c)return false;
-                continue;
+            else {
+                if(!dq.isEmpty() ){
+                    if(dq.pollLast()!=c)return false;
+                    continue;
+                }
+                else return false;
             }
-            else return false;
+            
             
         }
         return (dq.size()==0);   
