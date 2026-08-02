@@ -5,19 +5,21 @@ class Solution {
         int ml=height[0];
         
         for(int i=0;i<height.length;i++){
-            maxleft[i]=ml;
             ml=Math.max(ml,height[i]);
+            maxleft[i]=ml;
+            
 
         }
         int mr=height[height.length-1];
         for(int i=height.length-1;i>-1;i--){
-            maxright[i]=mr;
             mr=Math.max(mr,height[i]);
+            maxright[i]=mr;
+            
         }
         int volume=0;
         for(int i=0;i<height.length;i++){
-            int addition=(Math.min(maxleft[i],maxright[i])-height[i]);
-            volume+=(addition>0)?addition:0;
+            volume+=(Math.min(maxleft[i],maxright[i])-height[i]);
+            
 
         }
         return volume;
