@@ -9,7 +9,7 @@ class Solution {
                 if(dq.pollLast()!=c)return false;
                 continue;
             }
-            else if(dq.isEmpty())return false;
+            else return false;
             
         }
         return (dq.size()==0);   
