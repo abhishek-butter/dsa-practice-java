@@ -1,30 +1,26 @@
 class Solution {
     public int trap(int[] height) {
-        int ml[]=new int[height.length];
-        int mr[]=new int[height.length];
-        int m=height[0];
-
+        int[] maxright=new int[height.length];
+        int[] maxleft=new int[height.length];
+        int ml=height[0];
+        
         for(int i=0;i<height.length;i++){
-            
-            m = Math.max(m,height[i]);
-            ml[i]=m;
-            
-
+            maxleft[i]=ml;
+            ml=Math.max(ml,height[i]);
 
         }
-        m=height[height.length-1];
+        int mr=height[height.length-1];
         for(int i=height.length-1;i>-1;i--){
-            
-            m = Math.max(m,height[i]);
-            mr[i]=m;
-
-
+            maxright[i]=mr;
+            mr=Math.max(mr,height[i]);
         }
-        int sum=0;
+        int volume=0;
         for(int i=0;i<height.length;i++){
-            sum+=Math.min(ml[i],mr[i])-height[i];
+            int addition=(Math.min(maxleft[i],maxright[i])-height[i]);
+            volume+=(addition>0)?addition:0;
+
         }
-        return sum;
+        return volume;
         
     }
 }
