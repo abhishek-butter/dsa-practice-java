@@ -2,59 +2,47 @@ class WordDictionary {
     class TrieNode{
         TrieNode children[]=new TrieNode[26];
         boolean flag=false;
-        
     }
     TrieNode root;
-
     public WordDictionary() {
         root=new TrieNode();
-
-
         
     }
     
     public void addWord(String word) {
         TrieNode t=root;
         for(char c:word.toCharArray()){
-            int index=c-'a';
-            if(t.children[index]==null)t.children[index]=new TrieNode();
-            t=t.children[index];
+            if(t.children[c-'a']==null)t.children[c-'a']=new TrieNode();
+            t=t.children[c-'a'];
         }
         t.flag=true;
-        
     }
     
     public boolean search(String word) {
-        return dfs(word,0,root);
-        
-        
+        return dfs(root,word,0);
         
     }
-    private boolean dfs(String word,int index,TrieNode node){
-        if(word.length()==index){
-            return node.flag;
+
+
+    public boolean dfs(TrieNode t,String word,int i){
+        if(word.length()==i){
+            return t.flag;
         }
-        char c=word.charAt(index);
-        int ci=c-'a';
-
-        if(c=='.'){
-            for(TrieNode child:node.children){
-                if(child!=null && dfs(word,index+1,child)){
-                    return true;
-                    
-                }
-
+        if(word.charAt(i)=='.'){
+            for(TrieNode child:t.children){
+                if(child!=null && dfs(child,word,i+1))return true;
             }
             return false;
-
         }
         else{
-            if(node.children[ci]==null)return false;;
-            
+            if(t.children[word.charAt(i)-'a']==null)return false;
 
         }
-        return dfs(word,index+1,node.children[ci]);
+        
+        
 
+                
+    return dfs(t.children[word.charAt(i)-'a'],word,i+1);
     }
 }
 
